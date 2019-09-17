@@ -1,4 +1,6 @@
 import React from "react";
+import {NavLink} from "react-router-dom";
+
 
 const Header = props => (
   <header className="black mb5 pt5">
@@ -7,19 +9,29 @@ const Header = props => (
     <nav>
       <ul className="list flex justify-center">
         <li className="mh2">
-          <a className="nav-link link biriyani-black f6 ttu gray active">
-            Selekta
-          </a>
+          <NavLink
+            exact
+            to="/"
+            className="nav-link link biriyani-black f6 ttu gray"
+          >
+            Home
+          </NavLink>
         </li>
         <li className="mh2">
-          <a className="nav-link link biriyani-black f6 ttu gray">
-            Vaults
-          </a>
+          <NavLink
+            to="/archive"
+            className="nav-link link biriyani-black f6 ttu gray"
+          >
+            Archive
+          </NavLink>
         </li>
         <li className="mh2">
-          <a className="nav-link link biriyani-black f6 ttu gray">
-            Scripture
-          </a>
+          <NavLink
+            to="/about"
+            className="nav-link link biriyani-black f6 ttu gray"
+          >
+            About
+          </NavLink>
         </li>
       </ul>
     </nav>
