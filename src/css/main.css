@@ -73,3 +73,12 @@ body {
   line-height: 1;
   letter-spacing: 0.05em;
 }
+
+.nav-link {
+  border-bottom: solid 3px rgba(0, 0, 0, 0);
+}
+
+.nav-link.active {
+  color: #000;
+  border-bottom-color: #000;
+}
