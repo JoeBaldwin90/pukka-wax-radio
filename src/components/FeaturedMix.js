@@ -1,12 +1,19 @@
-import React from 'react';
+import React from "react";
+import PlayButton from "./PlayButton";
+import PlayMix from "./PlayMix";
 
-const FeaturedMix = props => (
-  <div className="w-50-l vh-100 flex items-center justify-center bg-featured cover bg-center pad-bottom fixed-l left-0">
-    <div className="w-100 tc pa3">
-      <p className="b biriyani f6 white ttu">Featured Mix</p>
-      <h1  className="mix-title mt2 mb2 anton white ttu">Fela Kuti - Tribute mix</h1>
-      {/* Play button component */}
-    </div>
+const FeaturedMix = ({ name, pictures = {}, ...props }) => (
+  <div
+    className="w-50-l vh-100 flex items-center justify-center bg-featured cover bg-center pad-bottom fixed-l left-0 mix-overlay"
+    style={{ backgroundImage: `url(${pictures.extra_large})` }}
+  >
+    <PlayMix {...props}>
+      <div className="w-100 tc pa3 relative z-2">
+        <p className="b biriyani f6 white ttu">Featured Mix</p>
+        <h1 className="mix-title mt2 mb2 anton white ttu">{name}</h1>
+        <PlayButton />
+      </div>
+    </PlayMix>
   </div>
 );
 

@@ -77,11 +77,20 @@ class App extends Component {
   };
 
   render() {
+
+    // Grab first item in mixes array (destructuring). Empty object if no value.
+    const [firstMix = {}] = this.state.mixes
+
     return (
       <Router>
         <div>
           <div className="flex-l justify-end">
-            <FeaturedMix />
+            <FeaturedMix
+              {...this.state}
+              {...this.actions}
+              {...firstMix}
+              id={firstMix.key}
+            />
             <div className="w-50-l relative z-1">
               <Header />
               {/* Routed page */}
