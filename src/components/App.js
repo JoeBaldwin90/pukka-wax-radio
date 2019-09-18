@@ -40,6 +40,11 @@ class App extends Component {
       this.widget.togglePlay();
     },
     playMix: mixname => {
+      const {currentMix} = this.state
+      if (mixname === currentMix) {
+        // Stop running function if this condition is met
+        return this.widget.togglePlay()
+      }
       this.setState({
         currentMix: mixname
       });
