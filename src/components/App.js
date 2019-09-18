@@ -57,8 +57,15 @@ class App extends Component {
             <div className="w-50-l relative z-1">
               <Header />
               {/* Routed page */}
-              <Route exact path="/" component={Home} />
-              <Route path="/archive" component={Archive} />
+              <Route
+                exact
+                path="/"
+                component={() => <Home {...this.state} {...this.actions} />}
+              />
+              <Route
+                path="/archive"
+                component={() => <Archive {...this.state} {...this.actions} />}
+              />
               <Route path="/about" component={About} />
             </div>
           </div>
