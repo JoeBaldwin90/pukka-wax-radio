@@ -104,7 +104,7 @@ class App extends Component {
             src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&mini=1&autoplay=1&feed=%2Fstampthewax%2Fupside-down-a-fela-kuti-tribute-mix-by-rich-medina%2F"
             frameBorder="0"
             title="Fela Kuti mix"
-            className="player db fixed bottom-0 z-10"
+            className="player db fixed bottom-0 z-999"
             ref={player => (this.player = player)}
           ></iframe>
         </div>
