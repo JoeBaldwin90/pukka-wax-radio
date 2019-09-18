@@ -12,7 +12,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      playing: false, 
+      playing: false,
       currentMix: ""
     };
   }
@@ -34,18 +34,18 @@ class App extends Component {
     this.mountAudio();
   }
 
-  togglePlay = () => {
-    console.log("togglePlay");
-    this.widget.togglePlay();
-  };
-
-  playMix = mixname => {
-    this.setState({
-      currentMix: mixname
-    })
-    // Load new mix from Mixcloud mix URL, play on load.
-    this.widget.load(mixname, true);
-    this.mountAudio();
+  actions = {
+    togglePlay: () => {
+      console.log("togglePlay");
+      this.widget.togglePlay();
+    },
+    playMix: mixname => {
+      this.setState({
+        currentMix: mixname
+      });
+      this.widget.load(mixname, true); // Load new mix from Mixcloud mix URL, play on load.
+      this.mountAudio();
+    }
   };
 
   render() {
