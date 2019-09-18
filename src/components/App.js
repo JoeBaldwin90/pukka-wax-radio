@@ -1,7 +1,7 @@
 /*global Mixcloud*/
-import React, {Component} from 'react';
+import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import FeaturedMix from './FeaturedMix';
+import FeaturedMix from "./FeaturedMix";
 import Header from "./Header";
 
 const Home = () => <h1>Home</h1>;
@@ -9,12 +9,24 @@ const Archive = () => <h1>Archive</h1>;
 const About = () => <h1>About</h1>;
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      playing: false
+    };
+  }
 
   mountAudio = async () => {
     this.widget = Mixcloud.PlayerWidget(this.player);
     await this.widget.ready;
-    await this.widget.play();
     console.log(this.widget);
+    await this.widget.play(); // 2018+ broswers don't support this functionality.
+    await this.widget.events.pause.on(() => {
+      this.setState({ playing: false });
+    });
+    await this.widget.events.play.on(() => {
+      this.setState({ playing: true });
+    });
   };
 
   componentDidMount() {
@@ -29,6 +41,7 @@ class App extends Component {
   playMix = mixname => {
     // Load new mix from Mixcloud mix URL, play on load.
     this.widget.load(mixname, true);
+    this.mountAudio();
   };
 
   render() {
@@ -41,7 +54,7 @@ class App extends Component {
               <Header />
               {/* Routed page */}
               <div>
-                <button onClick={this.togglePlay}>Play/Pause</button>
+                <button onClick={this.togglePlay}>{this.state.playing ? "Pause" : "Play"}</button>
               </div>
               <div>
                 <button
