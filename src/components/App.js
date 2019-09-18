@@ -10,54 +10,68 @@ const About = () => <h1>About</h1>;
 
 class App extends Component {
 
-  mountAudio = async() => {
+  mountAudio = async () => {
     this.widget = Mixcloud.PlayerWidget(this.player);
-    await this.widget.ready
-    await this.widget.play()
-    console.log(this.widget)
-  }
+    await this.widget.ready;
+    await this.widget.play();
+    console.log(this.widget);
+  };
 
   componentDidMount() {
-    this.mountAudio()
+    this.mountAudio();
   }
 
   togglePlay = () => {
-    console.log('togglePlay')
-    this.widget.togglePlay()
-  }
+    console.log("togglePlay");
+    this.widget.togglePlay();
+  };
+
+  playMix = mixname => {
+    // Load new mix from Mixcloud mix URL, play on load.
+    this.widget.load(mixname, true);
+  };
 
   render() {
-      return (
-        <Router>
-          <div>
-            <div className="flex-l justify-end">
-              <FeaturedMix />
-              <div className="w-50-l relative z-1">
-                <Header />
-                {/* Routed page */}
-                <div>
-                  <button onClick={this.togglePlay}>
-                    Play/Pause
-                  </button>
-                </div>
-                <Route exact path="/" component={Home} />
-                <Route path="/archive" component={Archive} />
-                <Route path="/about" component={About} />
+    return (
+      <Router>
+        <div>
+          <div className="flex-l justify-end">
+            <FeaturedMix />
+            <div className="w-50-l relative z-1">
+              <Header />
+              {/* Routed page */}
+              <div>
+                <button onClick={this.togglePlay}>Play/Pause</button>
               </div>
+              <div>
+                <button
+                  onClick={() =>
+                    this.playMix(
+                      "/NTSRadio/naomi-asaturyan-16th-september-2019/"
+                    )
+                  }
+                >
+                  Play mix
+                </button>
+              </div>
+              <Route exact path="/" component={Home} />
+              <Route path="/archive" component={Archive} />
+              <Route path="/about" component={About} />
             </div>
-            {/* Audio player */}
-            <iframe
-              width="100%"
-              height="60"
-              src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&mini=1&autoplay=1&feed=%2Fstampthewax%2Fupside-down-a-fela-kuti-tribute-mix-by-rich-medina%2F"
-              frameBorder="0"
-              title="Fela Kuti mix"
-              className="player db fixed bottom-0 z-10"
-              ref={player => (this.player = player)}
-            ></iframe>
           </div>
-        </Router>
-      );
+          {/* Audio player */}
+          <iframe
+            width="100%"
+            height="60"
+            src="https://www.mixcloud.com/widget/iframe/?hide_cover=1&mini=1&autoplay=1&feed=%2Fstampthewax%2Fupside-down-a-fela-kuti-tribute-mix-by-rich-medina%2F"
+            frameBorder="0"
+            title="Fela Kuti mix"
+            className="player db fixed bottom-0 z-10"
+            ref={player => (this.player = player)}
+          ></iframe>
+        </div>
+      </Router>
+    );
   }
 }
 
