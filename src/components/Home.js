@@ -1,20 +1,14 @@
 import React from "react";
 import Mix from "./Mix";
 
-const Home = props => (
+const Home = ({ mixes, ...props }) => (
   <div className="flex flex-wrap justify-between ph3 ph4-l mixes">
-   
-    {/* If we have a mix object in the props, render it out */}
-    {props.mix && (
+    {/* Map over all of the mixes */}
+    {mixes.map(mix => (
       <div className="mix mb4">
-        <Mix
-          name={props.mix.name}
-          id={props.mix.key}
-          {...props}
-        />
+        <Mix {...props} {...mix} id={mix.key} />
       </div>
-    )}
-
+    ))}
   </div>
 );
 
