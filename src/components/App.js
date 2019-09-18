@@ -12,7 +12,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      playing: false
+      playing: false, 
+      currentMix: ""
     };
   }
 
@@ -39,6 +40,9 @@ class App extends Component {
   };
 
   playMix = mixname => {
+    this.setState({
+      currentMix: mixname
+    })
     // Load new mix from Mixcloud mix URL, play on load.
     this.widget.load(mixname, true);
     this.mountAudio();
@@ -54,7 +58,9 @@ class App extends Component {
               <Header />
               {/* Routed page */}
               <div>
-                <button onClick={this.togglePlay}>{this.state.playing ? "Pause" : "Play"}</button>
+                <button onClick={this.togglePlay}>
+                  {this.state.playing ? "Pause" : "Play"}
+                </button>
               </div>
               <div>
                 <button
@@ -64,7 +70,16 @@ class App extends Component {
                     )
                   }
                 >
-                  Play mix
+                  Play NTS mix
+                </button>
+                <button
+                  onClick={() =>
+                    this.playMix(
+                      "/jetsetwithdjmrnick/almost-all-africa-live-at-bevy/"
+                    )
+                  }
+                >
+                  Play ATFA mix
                 </button>
               </div>
               <Route exact path="/" component={Home} />
