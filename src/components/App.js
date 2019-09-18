@@ -13,8 +13,21 @@ class App extends Component {
     super(props);
     this.state = {
       playing: false,
-      currentMix: ""
+      currentMix: "",
+      mix: null
     };
+  }
+
+  fetchMixes = async () => {
+    try {
+      const response = await fetch("https://api.mixcloud.com/jetsetwithdjmrnick/almost-all-africa-live-at-bevy/")
+      const data = await response.json()
+      this.setState({
+        mix: data
+      })
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   mountAudio = async () => {
@@ -32,6 +45,7 @@ class App extends Component {
 
   componentDidMount() {
     this.mountAudio();
+    this.fetchMixes();
   }
 
   actions = {
