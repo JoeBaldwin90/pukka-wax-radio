@@ -112,6 +112,12 @@ body {
   background-image: url('../images/play-button.svg');
 }
 
+/* This class is activated when the id & currentMix */
+/* props in the PlayMix component are the same      */
+.playing .play-button {
+  background-image: url('../images/pause-button.svg');
+}
+
 .button {
   border: none;
   outline: none;
