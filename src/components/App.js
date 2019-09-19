@@ -4,9 +4,9 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import FeaturedMix from "./FeaturedMix";
 import Header from "./Header";
 import Home from "./Home";
+import Archive from "./Archive";
 import mixesData from "../data/mixes";
 
-const Archive = () => <h1>Archive</h1>;
 const About = () => <h1>About</h1>;
 
 class App extends Component {
@@ -97,11 +97,11 @@ class App extends Component {
               <Route
                 exact
                 path="/"
-                component={() => <Home {...this.state} {...this.actions} />}
+                render={() => <Home {...this.state} {...this.actions} />}
               />
               <Route
                 path="/archive"
-                component={() => <Archive {...this.state} {...this.actions} />}
+                render={() => <Archive {...this.state} {...this.actions} />}
               />
               <Route path="/about" component={About} />
             </div>

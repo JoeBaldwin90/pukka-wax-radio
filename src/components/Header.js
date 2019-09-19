@@ -1,7 +1,6 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
 
-
 const Header = props => (
   <header className="black mb5 pt5">
     <h1 className="ttu f3 tracked-mega-ns anton tc mt0 mb3">Pukka Wax Radio</h1>
