@@ -13,7 +13,7 @@ const Header = props => (
             to="/"
             className="nav-link link biriyani-black f6 ttu gray"
           >
-            Home
+            What's Hot
           </NavLink>
         </li>
         <li className="mh2">
