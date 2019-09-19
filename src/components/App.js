@@ -42,7 +42,7 @@ class App extends Component {
   mountAudio = async () => {
     this.widget = Mixcloud.PlayerWidget(this.player);
     await this.widget.ready;
-    await this.widget.play(); // 2018+ broswers don't support this functionality.
+    
     await this.widget.events.pause.on(() => {
       this.setState({ playing: false });
     });
@@ -58,7 +58,6 @@ class App extends Component {
 
   actions = {
     togglePlay: () => {
-      console.log("togglePlay");
       this.widget.togglePlay();
     },
     playMix: mixname => {
