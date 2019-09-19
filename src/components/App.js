@@ -102,9 +102,7 @@ class App extends Component {
                 path="/archive"
                 render={() => <Archive {...this.state} {...this.actions} />}
               />
-              <Route 
-              path="/about" 
-              render={() => <About /> }/>
+              <Route path="/about" render={() => <About {...this.state} />} />
             </div>
           </div>
           {/* Audio player */}
