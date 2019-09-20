@@ -1,7 +1,7 @@
 import React from "react";
 import CountUp from "react-countup";
 
-const Counter = ({ start = 0, end }) => (
+const Counter = ({ end = 0 }) => (
   <div className="f1 orange b lh-solid">
     <CountUp
       start={0}
