@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import Stat from "./Stat";
 
 const About = ({ mixes }) => (
@@ -35,4 +36,4 @@ const About = ({ mixes }) => (
   </div>
 );
 
-export default About;
+export default connect(state => state)(About);

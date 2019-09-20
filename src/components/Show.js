@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import differenceInDays from "date-fns/differenceInDays";
 import parseISO from "date-fns/parseISO";
 import Stat from "./Stat";
@@ -55,4 +56,4 @@ class Show extends Component {
   }
 }
 
-export default Show;
+export default connect(state => state)(Show);

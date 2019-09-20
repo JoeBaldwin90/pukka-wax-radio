@@ -1,10 +1,26 @@
 const initialState = {
   mixes: [],
-  currentMix: null
+  currentMix: "text",
+  playing: false
 };
 
+// Reducer
 function mixesApp(state = initialState, action) {
-  return state;
+  const { type, payload } = action;
+  switch (type) {
+    case "SET_MIX":
+      return {
+        ...state,
+        currentMix: payload
+      };
+    case "ADD_MIX":
+      return {
+        ...state,
+        mixes: [...state.mixes, { ...payload, id: payload.key }]
+      };
+    default:
+      return state;
+  }
 }
 
-export default mixesApp
+export default mixesApp;

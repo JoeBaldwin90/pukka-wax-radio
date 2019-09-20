@@ -1,13 +1,17 @@
 /*global Mixcloud*/
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import { connect } from "react-redux";
+
 import FeaturedMix from "./FeaturedMix";
 import Header from "./Header";
 import Home from "./Home";
 import Archive from "./Archive";
 import About from "./About";
 import Show from "./Show";
+
 import mixesData from "../data/mixes";
+import actions from "../store/actions";
 
 class App extends Component {
   constructor(props) {
@@ -15,26 +19,21 @@ class App extends Component {
     this.state = {
       playing: false,
       currentMix: "",
-      mix: null,
-      mixIds: mixesData,
-      mixes: []
+      mix: null
     };
   }
 
   fetchMixes = async () => {
-    const { mixIds } = this.state;
 
-    mixIds.map(async id => {
+    const {addMix} = this.props
+
+    mixesData.map(async id => {
       try {
-        const response = await fetch(
-          `https://api.mixcloud.com/${id}`
-        );
+        const response = await fetch(`https://api.mixcloud.com/${id}`);
         const data = await response.json();
-        
-        this.setState((prevState, props) => ({
-          mixes: [...prevState.mixes, data]
-        }))
-      } catch (error) {
+        addMix(data)
+      } 
+      catch (error) {
         console.log(error);
       }
     });
@@ -78,7 +77,7 @@ class App extends Component {
   render() {
 
     // Grab first item in mixes array (destructuring). Empty object if no value.
-    const [firstMix = {}] = this.state.mixes
+    const [firstMix = {}] = this.props.mixes
 
     return (
       <Router>
@@ -93,25 +92,15 @@ class App extends Component {
             <div className="w-50-l relative z-1">
               <Header />
               {/* Routed pages */}
+              <Route exact path="/" component={Home} />
+              <Route path="/archive" component={Archive} />
+              <Route path="/about" component={About} />
               <Route
-                exact
-                path="/"
-                render={() => <Home {...this.state} {...this.actions} />}
+                path="/show/:slug"
+                render={routeParams => (
+                  <Show {...this.state} {...routeParams} />
+                )}
               />
-              <Route
-                path="/archive"
-                render={() => <Archive {...this.state} {...this.actions} />}
-              />
-              <Route
-                path="/about" 
-                render={() => <About {...this.state} />} 
-              />
-
-              <Route 
-                path="/show/:slug" 
-                render={routeParams => <Show {...this.state} {...routeParams} />}
-              />
-
             </div>
           </div>
           {/* Audio player */}
@@ -130,4 +119,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(state => state, actions)(App);
