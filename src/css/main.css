@@ -68,12 +68,6 @@ body {
   background-image: url('../images/featured.jpg');
 }
 
-.mix-title {
-  font-size: 4rem;
-  line-height: 1;
-  letter-spacing: 0.05em;
-}
-
 .nav-link {
   border-bottom: solid 3px rgba(0, 0, 0, 0);
 }
@@ -125,4 +119,15 @@ body {
 
 .orange {
   color: #fd9427;
+}
+
+@media (max-width: 620px) {
+  .mix {
+    width: calc(80%);
+    margin: 0 auto;
+    margin-bottom: 2rem;;
+  }
+  .mix:nth-of-type(even) {
+    transform: translateY(0rem);
+  }
 }

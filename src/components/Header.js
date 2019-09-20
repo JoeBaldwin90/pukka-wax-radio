@@ -3,7 +3,11 @@ import {NavLink} from "react-router-dom";
 
 const Header = props => (
   <header className="black mb5 pt5">
-    <h1 className="ttu f3 tracked-mega-ns anton tc mt0 mb3">Pukka Wax Radio</h1>
+    <NavLink exact to="/" className="link black">
+      <h1 className="ttu f3 tracked-mega-ns anton tc mt0 mb3">
+        Pukka Wax Radio
+      </h1>
+    </NavLink>
 
     <nav>
       <ul className="list flex justify-center">

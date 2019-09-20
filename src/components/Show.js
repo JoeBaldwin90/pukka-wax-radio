@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import differenceInDays from "date-fns/differenceInDays";
 import parseISO from "date-fns/parseISO";
 import Stat from "./Stat";
-import { taggedTemplateExpression } from "@babel/types";
 
 const Tag = ({ name, url }) => (
   <div className="mr2 mb2 o-70">

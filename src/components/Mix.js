@@ -13,7 +13,7 @@ const Mix = ({ name, pictures, slug, ...props }) => (
       <PlayMix {...props}>
         <div className="ph3 pv4 aspect-ratio--object mix-overlay">
           <div className="flex items-start justify-between relative z-2">
-            <h1 className="f4 f3-l b mv0 white ttu biryani pr2 lh-title">
+            <h1 className="f5 f3-ns b mv0 white ttu biryani pr2 lh-title">
               {name}
             </h1>
             <PlayButton {...props} />
