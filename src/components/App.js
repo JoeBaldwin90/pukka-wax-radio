@@ -95,10 +95,7 @@ class App extends Component {
               <Route exact path="/" component={Home} />
               <Route path="/archive" component={Archive} />
               <Route path="/about" component={About} />
-              <Route
-                path="/show/:slug"
-                render={routeParams => (
-                  <Show {...this.state} {...routeParams} />
+              <Route path="/show/:slug" component={Show} />
                 )}
               />
             </div>

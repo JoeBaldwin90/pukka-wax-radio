@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import differenceInDays from "date-fns/differenceInDays";
 import parseISO from "date-fns/parseISO";
@@ -17,43 +17,42 @@ const Tag = ({ name, url }) => (
   </div>
 );
 
-const Tags = ({tags = []}) => (
+const Tags = ({ tags = [] }) => (
   <div className="tags flex flex-wrap justify-center pt3 mb3">
-    {tags.map(tag => <Tag {...tag} /> )}
+    {tags.map(tag => (
+      <Tag {...tag} />
+    ))}
   </div>
-)
+);
 
-class Show extends Component {
+const Show = ({ mix }) => (
+  <div className="ph3 ph4-l mb5 tc">
+    <div className="measure center lh-copy">
+      <h1 className="f3 biryani-black ttu">{mix.name}</h1>
+      <Tags tags={mix.tags} />
+      <p>{mix.description}</p>
+      <Stat statName="Played" statNumber={mix.play_count} statWord="Times" />
+      <Stat
+        statName="Uploaded"
+        statNumber={differenceInDays(new Date(), parseISO(mix.created_time))}
+        statWord="Days ago"
+      />
+      <Stat
+        statName="Loved by"
+        statNumber={mix.favorite_count}
+        statWord="People"
+      />
+    </div>
+  </div>
+);
 
-  render() {
-    const { match, mixes } = this.props;
-    const [mix = {}] = mixes.filter(mix => mix.slug === match.params.slug);
+// Selector - grab data from state
+const getMix = (mixes, slug) => {
+  const [mix = {}] = mixes.filter(mix => mix.slug === slug);
+  return mix
+};
 
-    return (
-      <div className="ph3 ph4-l mb5 tc">
-        <div className="measure center lh-copy">
-          <h1 className="f3 biryani-black ttu">{mix.name}</h1>
-          <Tags tags={mix.tags} />
-          <p>{mix.description}</p>
-          <Stat
-            statName="Played"
-            statNumber={mix.play_count}
-            statWord="Times"
-          />
-          <Stat
-            statName="Uploaded"
-            statNumber={differenceInDays(new Date(), parseISO(mix.created_time))}
-            statWord="Days ago"
-          />
-          <Stat
-            statName="Loved by"
-            statNumber={mix.favorite_count}
-            statWord="People"
-          />
-        </div>
-      </div>
-    );
-  }
-}
-
-export default connect(state => state)(Show);
+export default connect((state, props) => ({
+  state,
+  mix: getMix(state.mixes, props.match.params.slug)
+}))(Show);
