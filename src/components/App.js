@@ -6,6 +6,7 @@ import Header from "./Header";
 import Home from "./Home";
 import Archive from "./Archive";
 import About from "./About";
+import Show from "./Show";
 import mixesData from "../data/mixes";
 
 class App extends Component {
@@ -42,7 +43,7 @@ class App extends Component {
   mountAudio = async () => {
     this.widget = Mixcloud.PlayerWidget(this.player);
     await this.widget.ready;
-    await this.widget.play(); // 2018+ broswers don't support this functionality.
+    
     await this.widget.events.pause.on(() => {
       this.setState({ playing: false });
     });
@@ -58,7 +59,6 @@ class App extends Component {
 
   actions = {
     togglePlay: () => {
-      console.log("togglePlay");
       this.widget.togglePlay();
     },
     playMix: mixname => {
@@ -92,7 +92,7 @@ class App extends Component {
             />
             <div className="w-50-l relative z-1">
               <Header />
-              {/* Routed page */}
+              {/* Routed pages */}
               <Route
                 exact
                 path="/"
@@ -102,7 +102,16 @@ class App extends Component {
                 path="/archive"
                 render={() => <Archive {...this.state} {...this.actions} />}
               />
-              <Route path="/about" render={() => <About {...this.state} />} />
+              <Route
+                path="/about" 
+                render={() => <About {...this.state} />} 
+              />
+
+              <Route 
+                path="/show/:slug" 
+                render={routeParams => <Show {...this.state} {...routeParams} />}
+              />
+
             </div>
           </div>
           {/* Audio player */}
