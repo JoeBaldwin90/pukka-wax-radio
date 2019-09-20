@@ -4,28 +4,11 @@ import parseISO from "date-fns/parseISO";
 import Stat from "./Stat";
 
 class Show extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      mix: {}
-    };
-  }
-
-  // Run function every time component gets new props
-  // ComponentDidMount only runs once.
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    const { match } = this.props;
-    const { mixes } = nextProps;
-    const [firstMix = {}] = mixes.filter(mix => mix.slug === match.params.slug);
-    this.setState({
-      mix: firstMix
-    });
-  }
 
   render() {
-    const { match } = this.props;
-    const { mix } = this.state;
-    
+    const { match, mixes } = this.props;
+    const [mix = {}] = mixes.filter(mix => mix.slug === match.params.slug);
+
     return (
       <div className="ph3 ph4-l mb5 tc">
         <div className="measure center lh-copy">
