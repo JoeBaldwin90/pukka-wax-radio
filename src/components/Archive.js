@@ -1,12 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
+
 import PlayButton from "./PlayButton"
 import PlayMix from "./PlayMix";
 
 const Archive = ({ mixes, ...props }) => (
   <ul className="list pl0 archive mb5">
     {mixes.map(mix => (
-      <PlayMix {...props}>
+      <PlayMix id={mix.id}>
         <li className="ph3 ph4-l">
           <div className="pv3 bb b--light-gray flex justify-between items-center">
             <h1 className="f6 mv0 black b ttu biriyani pr3">{mix.name}</h1>
