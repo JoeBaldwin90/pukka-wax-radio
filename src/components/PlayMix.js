@@ -8,10 +8,11 @@ const PlayMix = ({
   currentMix,
   playing,
   children,
-  fromMixcloud
+  fromMixcloud,
+  className
 }) => (
   <div
-    className={`pointer ${id === currentMix && playing && "playing"}`}
+    className={`${className} ${id === currentMix && playing && "playing"}`}
     onClick={() => playMix({ currentMix: id, fromMixcloud: false })}
   >
     {children}
