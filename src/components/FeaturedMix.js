@@ -19,11 +19,12 @@ const FeaturedMix = ({ name, pictures = {}, ...props }) => (
 );
 
 // Selector - grab data from state
-const getFristMix = (mixes, slug) => {
-  const [firstMix = {}] = mixes;
-  return firstMix;
+const getFristMix = (state) => {
+  const [featuredMix] = state.mixes.filter(mix => mix.id === state.featuredMix);
+  const [firstMix = {}] = state.mixes;
+  return featuredMix || firstMix; // Returen featuredMix if exists, else return firstMix
 };
 
 export default connect(state => ({ 
-  ...getFristMix(state.mixes)
+  ...getFristMix(state)
 }))(FeaturedMix);

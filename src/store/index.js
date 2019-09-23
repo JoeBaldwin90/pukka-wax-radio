@@ -1,9 +1,10 @@
 const initialState = {
   mixes: [],
-  currentMix: "text",
+  currentMix: null,
   widgetReady: false,
   playing: false,
-  fromMixcloud: false
+  fromMixcloud: false, 
+  featuredMix: null
 };
 
 // Reducer
@@ -26,6 +27,11 @@ const mixesApp = (state = initialState, action) => {
       return {
         ...state,
         widgetReady: true
+      };
+    case "SET_FEATURED_MIX":
+      return {
+        ...state,
+        featuredMix: payload
       };
     default:
       return state;
