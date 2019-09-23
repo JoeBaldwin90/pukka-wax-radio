@@ -32,6 +32,11 @@ class Show extends Component {
     setFeaturedMix(id)
   }
 
+  componentWillUnmount() {
+    const { setFeaturedMix } = this.props;
+    setFeaturedMix(false);
+  }
+
   render() {
     const {tags, description, play_count, created_time, name, favorite_count} = this.props;
     return (
