@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import actions from "../store/actions";
+import classNames from "classnames"
 
 const PlayMix = ({
   playMix,
@@ -12,7 +13,12 @@ const PlayMix = ({
   className
 }) => (
   <div
-    className={`${className} ${id === currentMix && playing && "playing"}`}
+    className={classNames({
+      // Classname varables
+      [className]: className,
+      playing: id === currentMix && playing && fromMixcloud,
+      loading: id === currentMix && !playing && !fromMixcloud
+    })}
     onClick={() => playMix({ currentMix: id, fromMixcloud: false })}
   >
     {children}
