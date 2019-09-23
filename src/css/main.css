@@ -64,10 +64,6 @@ body {
   padding-bottom: 60px;
 }
 
-.bg-featured {
-  background-image: url('../images/featured.jpg');
-}
-
 .nav-link {
   border-bottom: solid 3px rgba(0, 0, 0, 0);
 }
@@ -101,15 +97,42 @@ body {
 }
 
 .play-button {
+  background-color: #fd9427;
+  border-radius: 100%;
+  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   width: 50px;
   height: 50px;
-  background-image: url('../images/play-button.svg');
+  background-image: url('../images/play.svg');
+  background-size: 25% !important;
+  background-position-x: 55%;
+}
+
+.play-button:hover {
+  box-shadow: 0 0 0.5rem rgba(50, 50, 50, 0.25);
+  transform: scale(1.25);
 }
 
 /* This class is activated when the id & currentMix */
 /* props in the PlayMix component are the same      */
 .playing .play-button {
-  background-image: url('../images/pause-button.svg');
+  background-image: url('../images/pause.svg');
+}
+
+.playing .play-button:hover {
+  background-image: url('../images/pause.svg');
+  background-position-x: center;
+}
+
+.playing .play-button:not(:hover) {
+  background-image: url('../images/bars.svg');
+  background-size: 37% !important;
+  background-position-x: center;
+}
+
+.loading .play-button {
+  background-image: url('../images/loader.svg');
+  background-size: 55% !important;
+  background-position-x: center;
 }
 
 .button {

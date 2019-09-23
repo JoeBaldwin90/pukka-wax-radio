@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import Mix from "./Mix";
 
 const Home = ({ mixes, ...props }) => (
@@ -6,10 +7,10 @@ const Home = ({ mixes, ...props }) => (
     {/* Map over all of the mixes */}
     {mixes.slice(0,4).map(mix => (
       <div className="mix mb5">
-        <Mix {...props} {...mix} id={mix.key} />
+        <Mix {...props} {...mix} />
       </div>
     ))}
   </div>
 );
 
-export default Home;
+export default connect(state => state)(Home);
