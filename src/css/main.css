@@ -140,10 +140,6 @@ body {
   outline: none;
 }
 
-.orange {
-  color: #fd9427;
-}
-
 @media (max-width: 620px) {
   .mix {
     width: calc(80%);

@@ -1,8 +1,16 @@
 import React from "react";
 import CountUp from "react-countup";
+import styled from "styled-components";
 
-const Counter = ({ end = 0 }) => (
-  <div className="f1 orange b lh-solid">
+const Counter = styled.p`
+  font-size: 3em;
+  color: #fd9427;
+  font-weight: 600;
+  line-height: 1.25;
+`;
+
+export default ({ end = 0 }) => (
+  <Counter>
     <CountUp
       start={0}
       end={end}
@@ -10,7 +18,5 @@ const Counter = ({ end = 0 }) => (
       duration={2.75}
       separator={","}
     ></CountUp>
-  </div>
+  </Counter>
 );
-
-export default Counter;
