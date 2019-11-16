@@ -39,6 +39,7 @@ const Link = ({ to, className, children }) => (
 );
 
 const StyledLink = styled(Link)`
+  font-family: "Biryani", sans-serif;
   font-size: 0.875rem;
   text-transform: uppercase;
   text-decoration: none;

@@ -38,7 +38,7 @@ const GlobalStyles = createGlobalStyle`
     }
 
     body {
-        @import url('https://fonts.googleapis.com/css?family=Biryani:400,700,900&display=swap');
+        @import url('https://fonts.googleapis.com/css?family=Work+Sans|Anton|Biryani:400,700,900&display=swap');
         font-family: 'Work Sans', -apple-system, sans-serif;
         font-size: 16px;
         line-height: 1.5;
