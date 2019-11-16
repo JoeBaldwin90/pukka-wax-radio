@@ -1,39 +1,49 @@
 import React from "react";
 import { connect } from "react-redux";
-import Stat from "./Stat";
+import styled from "styled-components";
+import Statistics from "./Statistics";
+
+const AboutContainer = styled.section`
+  padding: 0 1em;
+  font-family: "Biryani", sans-serif;
+  max-width: 30em;
+  margin: 0 auto;
+  margin-bottom: 4em;
+
+  @media (min-width: 60em) {
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+`;
+
+const AboutCopy = styled.div`
+  text-align: center;
+  margin-bottom: 1em;
+  padding: 0 1em;
+  line-height: 1.5;
+`;
+
+const AboutParagraph = styled.p`
+  margin: 0 0 1.5em 0;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+`;
 
 const About = ({ mixes }) => (
-  <div className="ph3 ph4-l biryani measure center mb5">
-    <div className="lh-copy f4 ph3 mb3 tc">
-      <p className="mt0 mb4">
+  <AboutContainer>
+    <AboutCopy>
+      <AboutParagraph>
         Whether you're from Sunderland, Somalia or the Sombrero Galaxy, we'll
         get you in the mood for dancing. Our rhythms permeate space, time and
         culture.
-      </p>
-      <p className="mt0">Pukka Wax Radio. Universal vibes.</p>
-    </div>
-    <div className="">
-      <Stat statName="Featuring" statNumber={mixes.length} statWord="Mixes" />
-      <Stat
-        statName="Playtime"
-        statNumber={Math.floor(
-          mixes.reduce(
-            (accumulator, current) => accumulator + current.audio_length,
-            0
-          ) / 60
-        )}
-        statWord="Hours"
-      />
-      <Stat
-        statName="Played"
-        statNumber={mixes.reduce(
-          (accumulator, current) => accumulator + current.play_count,
-          0
-        )}
-        statWord="Times"
-      />
-    </div>
-  </div>
+      </AboutParagraph>
+      <AboutParagraph>Pukka Wax Radio. Universal vibes.</AboutParagraph>
+    </AboutCopy>
+
+    <Statistics mixes={mixes} />
+  </AboutContainer>
 );
 
 export default connect(state => state)(About);
