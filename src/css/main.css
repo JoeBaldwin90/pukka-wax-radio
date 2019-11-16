@@ -47,23 +47,7 @@
   background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
 }
 
-.play-button {
-  background-color: #fd9427;
-  border-radius: 100%;
-  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  width: 50px;
-  height: 50px;
-  background-image: url('../images/play.svg');
-  background-size: 25% !important;
-  background-position-x: 55%;
-}
-
-.play-button:hover {
-  box-shadow: 0 0 0.5rem rgba(50, 50, 50, 0.25);
-  transform: scale(1.25);
-}
-
-/* This class is activated when the id & currentMix */
+/* These classes are activated when the id & currentMix */
 /* props in the PlayMix component are the same      */
 .playing .play-button {
   background-image: url('../images/pause.svg');
@@ -86,16 +70,12 @@
   background-position-x: center;
 }
 
-.button {
-  border: none;
-  outline: none;
-}
-
 @media (max-width: 620px) {
   .mix {
     width: calc(80%);
     margin: 0 auto;
-    margin-bottom: 2rem;;
+    margin-bottom: 2rem;
+    ;
   }
   .mix:nth-of-type(even) {
     transform: translateY(0rem);

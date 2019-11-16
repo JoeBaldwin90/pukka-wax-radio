@@ -1,22 +1,53 @@
 import React from "react";
 import { connect } from "react-redux";
-
+import styled from "styled-components";
 import PlayButton from "./PlayButton"
 import PlayMix from "./PlayMix";
 
-const Archive = ({ mixes, ...props }) => (
-  <ul className="list pl0 archive mb5">
-    {mixes.map(mix => (
+const ArchiveContainer = styled.ul`
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 4em;
+`;
+
+const Mix = styled.li`
+  padding: 0 1em;
+
+  @media (min-width: 60em) {
+    padding: 0 2em;
+  }
+`;
+
+const Container = styled.div`
+  padding: 1em 0;
+  border-bottom: solid 1px lightgray;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const MixTitle = styled.h3`
+  font-size: 0.875em;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding-right: 1em;
+  color: #000;
+  width: 100%;
+`;
+
+const Archive = ({ mixes }) => (
+  <ArchiveContainer>
+    {mixes.map((mix, i) => (
       <PlayMix id={mix.id}>
-        <li className="ph3 ph4-l">
-          <div className="pv3 bb b--light-gray flex justify-between items-center">
-            <h1 className="f6 mv0 black b ttu biriyani pr3">{mix.name}</h1>
+        <Mix key={i}>
+          <Container>
+            <MixTitle>{mix.name}</MixTitle>
             <PlayButton />
-          </div>
-        </li>
+          </Container>
+        </Mix>
       </PlayMix>
     ))}
-  </ul>
+  </ArchiveContainer>
 );
 
 export default connect(state => state)(Archive);
