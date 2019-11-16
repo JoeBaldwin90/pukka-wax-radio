@@ -7,29 +7,19 @@
   font-weight: 900;
 }
 
-.anton {
-  font-family: 'Anton', sans-serif;
-}
-
 .pad-bottom {
   padding-bottom: 60px;
 }
 
-.nav-link {
-  border-bottom: solid 3px rgba(0, 0, 0, 0);
-}
-
-.nav-link.active {
+a.active {
   color: #000;
   border-bottom-color: #000;
 }
 
-.mixes {
-  padding-bottom: 5rem;
-}
-
 /* These classes are activated when the id & currentMix */
+
 /* props in the PlayMix component are the same      */
+
 .playing .play-button {
   background-image: url('../images/pause.svg');
 }
