@@ -9,14 +9,12 @@ const StatContainer = styled.div`
 `;
 
 const StatName = styled.h3`
-  font-family: "Biryani", sans-serif;
   font-size: 0.8em;
   font-weight: 900;
   text-transform: uppercase;
 `;
 
 const StatDescription = styled.p`
-  font-family: "Biryani", sans-serif;
   font-size: 1em;
   font-weight: 300;
   text-transform: uppercase;
