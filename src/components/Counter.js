@@ -5,7 +5,7 @@ import styled from "styled-components";
 const Counter = styled.p`
   font-size: 3em;
   color: #fd9427;
-  font-weight: 600;
+  font-weight: 900;
   line-height: 1.25;
 `;
 

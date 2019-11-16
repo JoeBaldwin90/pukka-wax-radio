@@ -38,8 +38,9 @@ const GlobalStyles = createGlobalStyle`
     }
 
     body {
+        @import url('https://fonts.googleapis.com/css?family=Biryani:400,700,900&display=swap');
         font-family: 'Work Sans', -apple-system, sans-serif;
-        font-size: 1rem;
+        font-size: 16px;
         line-height: 1.5;
         color: #5c5c5c;
         text-rendering: optimizeLegibility;

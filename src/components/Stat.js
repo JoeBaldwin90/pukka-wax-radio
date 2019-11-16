@@ -1,15 +1,34 @@
 import React from "react";
 import Counter from "./Counter";
+import styled from "styled-components";
 
-const Stat = ({ statName, statNumber, statWord }) => (
-  <div className="tc pa3 mt3">
-    <div className="f6 biryani-black ttu ">{statName}</div>
-    <div className="f5 biryani ttu tracked">
-      <Counter end={statNumber} /> 
+const StatContainer = styled.div`
+  text-align: center;
+  padding: 1em;
+  margin-top: 1em;
+`;
+
+const StatName = styled.h3`
+  font-family: "Biryani", sans-serif;
+  font-size: 0.8em;
+  font-weight: 900;
+  text-transform: uppercase;
+`;
+
+const StatDescription = styled.p`
+  font-family: "Biryani", sans-serif;
+  font-size: 1em;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+`;
+
+export default ({ statName, statNumber, statWord }) => (
+  <StatContainer>
+    <StatName>{statName}</StatName>
+    <StatDescription>
+      <Counter end={statNumber} />
       {statWord}
-    </div>
-  </div>
+    </StatDescription>
+  </StatContainer>
 );
-
-
-export default Stat;
