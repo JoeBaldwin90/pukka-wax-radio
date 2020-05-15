@@ -4,7 +4,6 @@
 ## Technologies
 - ReactJS
 - Redux
-- Node
 - AJAX
 - Tachyons
 
