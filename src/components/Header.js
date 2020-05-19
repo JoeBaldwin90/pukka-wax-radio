@@ -60,13 +60,13 @@ export default () => (
 
     <nav>
       <LinksContainer>
-        <ListEl key="1">
+        <ListEl>
           <StyledLink to="/">What's Hot</StyledLink>
         </ListEl>
-        <ListEl key="2">
+        <ListEl>
           <StyledLink to="/archive">Archive</StyledLink>
         </ListEl>
-        <ListEl key="3">
+        <ListEl>
           <StyledLink to="/about">About</StyledLink>
         </ListEl>
       </LinksContainer>

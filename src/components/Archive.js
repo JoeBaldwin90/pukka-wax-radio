@@ -27,6 +27,7 @@ const Container = styled.div`
 `;
 
 const MixTitle = styled.h3`
+  font-family: "Work Sans";
   font-size: 0.875em;
   font-weight: 700;
   text-transform: uppercase;
@@ -38,7 +39,7 @@ const MixTitle = styled.h3`
 const Archive = ({ mixes }) => (
   <ArchiveContainer>
     {mixes.map((mix, i) => (
-      <PlayMix id={mix.id}>
+      <PlayMix id={mix.id} key={i}>
         <Mix key={i}>
           <Container>
             <MixTitle>{mix.name}</MixTitle>

@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import actions from "../store/actions";
 
 class Player extends Component {
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (!nextProps.widgetReady) {
       return;
     }
